@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# anthonythomas.com
 
-## Getting Started
+Personal umbrella site for Anthony Thomas — a LinkedIn-style home page + a Projects hub with preview/detail pages for side projects (Gridiron Analytics, Saveory, etc.).
 
-First, run the development server:
+Built with **Next.js (App Router)** + **TypeScript** + **Tailwind CSS**.
+
+## Features
+
+- **Home** page styled like a lightweight LinkedIn profile
+- **Sticky navbar** (Home / Projects + social links)
+- **Projects** page with clickable project cards
+- **Project detail** pages at `/projects/[slug]` with:
+  - preview image
+  - tags/status
+  - external links (website / iOS / Android)
+- Responsive/mobile-friendly layout
+- Easy content updates via `src/data/projects.ts` and `src/data/experience.ts`
+
+## Tech Stack
+
+- Next.js (App Router)
+- React + TypeScript
+- Tailwind CSS
+- Framer Motion (project card hover animations)
+
+## Project Structure
+
+```text
+src/
+  app/
+    page.tsx                # Home
+    projects/
+      page.tsx              # Projects list
+      [slug]/page.tsx       # Project detail
+  components/
+    NavBar.tsx
+    ProjectsGrid.tsx
+    ProjectCard.tsx
+    ExperienceSection.tsx
+  data/
+    projects.ts
+    experience.ts
+public/
+  # images, logos, previews
+```
+
+## Local Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Editing Content
 
-## Learn More
+### Projects
+Update:
 
-To learn more about Next.js, take a look at the following resources:
+- `src/data/projects.ts`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Each project supports fields like:
+- `slug`
+- `name`
+- `description`
+- `tags`
+- `status`
+- `previewImage`
+- `logo`
+- `externalUrl` / `iosUrl` / `androidUrl`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Experience
+Update:
 
-## Deploy on Vercel
+- `src/data/experience.ts`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Logos should live in `public/` and be referenced like:
+- `"/SaveoryLogo.png"`
+- `"/logos/accuray.png"`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Build
+
+```bash
+npm run build
+npm run start
+```
+
+## Deployment
+
+### Recommended: Vercel
+1. Push this repo to GitHub
+2. Import the repo into Vercel
+3. Add custom domain `anthonythomas.com` in Vercel Project Settings → Domains
+4. Point DNS records to Vercel (Route 53 / Namecheap / GoDaddy)
+
+After that, every `git push` triggers an automatic deploy.
+
+## License
+
+MIT
