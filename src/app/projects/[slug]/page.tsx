@@ -6,12 +6,19 @@ export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
-export default function ProjectDetailPage({
+export default async function ProjectDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const project = projects.find((p) => p.slug === params.slug);
+  const { slug: rawSlug } = await params;
+
+  // normalize slug so it always matches your data
+  const slug = decodeURIComponent(rawSlug).trim().toLowerCase();
+
+  const project = projects.find(
+    (p) => p.slug.trim().toLowerCase() === slug
+  );
 
   if (!project) {
     return (
@@ -26,7 +33,8 @@ export default function ProjectDetailPage({
     );
   }
 
-  const primaryLink = project.externalUrl || project.iosUrl || project.androidUrl;
+  const primaryLink =
+    project.externalUrl || project.iosUrl || project.androidUrl;
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -78,9 +86,13 @@ export default function ProjectDetailPage({
           </div>
         </header>
 
-        {/* Preview image that links out */}
         {primaryLink && project.previewImage ? (
-          <a href={primaryLink} target="_blank" rel="noreferrer" className="block group">
+          <a
+            href={primaryLink}
+            target="_blank"
+            rel="noreferrer"
+            className="block group"
+          >
             <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
               <Image
                 src={project.previewImage}
@@ -108,7 +120,6 @@ export default function ProjectDetailPage({
           </section>
         )}
 
-        {/* External links */}
         <section className="space-y-3">
           <h2 className="text-xl font-semibold">Links</h2>
           <div className="flex flex-wrap gap-3">
