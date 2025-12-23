@@ -107,4 +107,4 @@ After that, every `git push` triggers an automatic deploy.
 
 ## License
 
-MIT (optional — change if you want)
+MIT
