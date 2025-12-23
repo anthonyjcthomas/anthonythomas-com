@@ -27,7 +27,7 @@ export const projects: Project[] = [
     status: "Building",
     logo: "/gridiron-analytics.png",
     previewImage: "/gridiron-analytics.png",
-    externalUrl: "https://example.com", // change later or remove
+    // externalUrl: "", // leave off until you have a real URL
   },
   {
     slug: "saveory",
@@ -39,6 +39,6 @@ export const projects: Project[] = [
     status: "Live",
     logo: "/SaveoryLogo.png",
     previewImage: "/SaveoryLogo.png",
-    externalUrl: "https://example.com", // change later or remove
+    iosUrl: "https://apps.apple.com/us/app/saveory/id6608961161",
   },
 ];
