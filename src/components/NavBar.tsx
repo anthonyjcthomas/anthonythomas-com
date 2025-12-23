@@ -29,18 +29,19 @@ export default function NavBar() {
 
         {/* Right: site nav */}
         <div className="flex items-center gap-2 text-sm">
-          <Link
-            className="rounded-full border border-white/10 px-3 py-1 hover:bg-white/10"
-            href="/"
-          >
-            Home
-          </Link>
-          <Link
-            className="rounded-full border border-white/10 px-3 py-1 hover:bg-white/10"
-            href="/projects"
-          >
-            Projects
-          </Link>
+        <Link
+          className="rounded-full border border-white/40 bg-white/5 px-3 py-1 text-sm text-white hover:bg-white/15 hover:border-white/70 transition"
+          href="/"
+        >
+          Home
+        </Link>
+
+        <Link
+          className="rounded-full border border-white/40 bg-white/5 px-3 py-1 text-sm text-white hover:bg-white/15 hover:border-white/70 transition"
+          href="/projects"
+        >
+          Projects
+        </Link>
         </div>
       </div>
     </div>
