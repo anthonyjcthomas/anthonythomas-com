@@ -27,7 +27,7 @@ export const projects: Project[] = [
     status: "Building",
     logo: "/gridiron-analytics.png",
     previewImage: "/gridiron-analytics.png",
-    externalUrl: "https://gridironanalytics.xyz/git add src/data/projects.ts", // leave off until you have a real URL
+    externalUrl: "https://gridironanalytics.xyz/", 
   },
   {
     slug: "saveory",
